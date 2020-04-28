@@ -15,6 +15,7 @@ namespace SimpleNote
         public Form1()
         {
             InitializeComponent();
+            //Test commit
         }
     }
 }
