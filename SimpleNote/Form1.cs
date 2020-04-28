@@ -20,7 +20,7 @@ namespace SimpleNote
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Huy an cut");
+            MessageBox.Show("co lam thi moi co an khong thi an cut");
         }
     }
 }
