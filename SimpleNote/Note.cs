@@ -8,6 +8,7 @@ namespace SimpleNote
 {
     public class Note
     {
+        //note
         public uint ID { get; set; }
         public string description { get; set; }
         public DateTime dateCreated { get; set; }
