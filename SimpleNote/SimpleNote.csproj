@@ -66,6 +66,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -79,6 +80,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slide icon - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slide icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggle sidebar icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\all note icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash note icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

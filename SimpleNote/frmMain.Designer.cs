@@ -38,32 +38,52 @@
             this.trashNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelAllNote = new System.Windows.Forms.Panel();
+            this.splitter3 = new System.Windows.Forms.Splitter();
+            this.panelNoteDescription = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelNoteReview = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxNoteSearch = new System.Windows.Forms.TextBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.panelSlideMenu = new System.Windows.Forms.Panel();
-            this.tableLayoutPanelNoteView = new System.Windows.Forms.TableLayoutPanel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBoxShowSlideMenu = new System.Windows.Forms.PictureBox();
-            this.textBoxSearchNote = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.splitter4 = new System.Windows.Forms.Splitter();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pictureBoxToggleSidebar = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTrash = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSlideMenu = new System.Windows.Forms.PictureBox();
+            this.pictureBoxNewNote = new System.Windows.Forms.PictureBox();
+            this.pictureBoxTrashNote = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAllNote = new System.Windows.Forms.PictureBox();
+            this.richTextBoxDescription = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanelNoteView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSlideMenu)).BeginInit();
+            this.panelAllNote.SuspendLayout();
+            this.panelNoteDescription.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panelNoteReview.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panelSlideMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxToggleSidebar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrash)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlideMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrashNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAllNote)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.viewToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1254, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,19 +93,19 @@
             this.newNoteToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(41, 23);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newNoteToolStripMenuItem
             // 
             this.newNoteToolStripMenuItem.Name = "newNoteToolStripMenuItem";
-            this.newNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newNoteToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
             this.newNoteToolStripMenuItem.Text = "New Note";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -94,105 +114,250 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.trashNoteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(44, 23);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // trashNoteToolStripMenuItem
             // 
             this.trashNoteToolStripMenuItem.Name = "trashNoteToolStripMenuItem";
-            this.trashNoteToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.trashNoteToolStripMenuItem.Size = new System.Drawing.Size(198, 24);
             this.trashNoteToolStripMenuItem.Text = "Trash Note";
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(50, 23);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tableLayoutPanelNoteView);
+            this.panel1.Controls.Add(this.panelAllNote);
+            this.panel1.Controls.Add(this.splitter1);
             this.panel1.Controls.Add(this.panelSlideMenu);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Location = new System.Drawing.Point(0, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 426);
+            this.panel1.Size = new System.Drawing.Size(1254, 702);
             this.panel1.TabIndex = 1;
+            // 
+            // panelAllNote
+            // 
+            this.panelAllNote.Controls.Add(this.splitter3);
+            this.panelAllNote.Controls.Add(this.panelNoteDescription);
+            this.panelAllNote.Controls.Add(this.panelNoteReview);
+            this.panelAllNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAllNote.Location = new System.Drawing.Point(206, 0);
+            this.panelAllNote.Name = "panelAllNote";
+            this.panelAllNote.Size = new System.Drawing.Size(1048, 702);
+            this.panelAllNote.TabIndex = 4;
+            // 
+            // splitter3
+            // 
+            this.splitter3.Location = new System.Drawing.Point(343, 0);
+            this.splitter3.Name = "splitter3";
+            this.splitter3.Size = new System.Drawing.Size(1, 702);
+            this.splitter3.TabIndex = 5;
+            this.splitter3.TabStop = false;
+            // 
+            // panelNoteDescription
+            // 
+            this.panelNoteDescription.BackColor = System.Drawing.Color.White;
+            this.panelNoteDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelNoteDescription.Controls.Add(this.richTextBoxDescription);
+            this.panelNoteDescription.Controls.Add(this.tableLayoutPanel1);
+            this.panelNoteDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelNoteDescription.Location = new System.Drawing.Point(343, 0);
+            this.panelNoteDescription.Name = "panelNoteDescription";
+            this.panelNoteDescription.Size = new System.Drawing.Size(705, 702);
+            this.panelNoteDescription.TabIndex = 4;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Azure;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.733333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 94.26667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel1.Controls.Add(this.pictureBoxToggleSidebar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBoxTrash, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(703, 33);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // panelNoteReview
+            // 
+            this.panelNoteReview.BackColor = System.Drawing.Color.White;
+            this.panelNoteReview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelNoteReview.Controls.Add(this.tableLayoutPanel2);
+            this.panelNoteReview.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelNoteReview.Location = new System.Drawing.Point(0, 0);
+            this.panelNoteReview.Name = "panelNoteReview";
+            this.panelNoteReview.Size = new System.Drawing.Size(343, 702);
+            this.panelNoteReview.TabIndex = 3;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.Azure;
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.13953F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.86047F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel2.Controls.Add(this.pictureBoxSlideMenu, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBoxNewNote, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.textBoxNoteSearch, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(341, 33);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // textBoxNoteSearch
+            // 
+            this.textBoxNoteSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxNoteSearch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.textBoxNoteSearch.Font = new System.Drawing.Font("Calibri", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxNoteSearch.Location = new System.Drawing.Point(56, 3);
+            this.textBoxNoteSearch.Name = "textBoxNoteSearch";
+            this.textBoxNoteSearch.Size = new System.Drawing.Size(237, 29);
+            this.textBoxNoteSearch.TabIndex = 2;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(205, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(1, 702);
+            this.splitter1.TabIndex = 3;
+            this.splitter1.TabStop = false;
             // 
             // panelSlideMenu
             // 
-            this.panelSlideMenu.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelSlideMenu.BackColor = System.Drawing.Color.LightCyan;
+            this.panelSlideMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelSlideMenu.Controls.Add(this.pictureBoxTrashNote);
+            this.panelSlideMenu.Controls.Add(this.pictureBoxAllNote);
+            this.panelSlideMenu.Controls.Add(this.splitter4);
+            this.panelSlideMenu.Controls.Add(this.splitter2);
             this.panelSlideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSlideMenu.Location = new System.Drawing.Point(0, 0);
             this.panelSlideMenu.Name = "panelSlideMenu";
-            this.panelSlideMenu.Size = new System.Drawing.Size(205, 426);
+            this.panelSlideMenu.Size = new System.Drawing.Size(205, 702);
             this.panelSlideMenu.TabIndex = 0;
             // 
-            // tableLayoutPanelNoteView
+            // splitter4
             // 
-            this.tableLayoutPanelNoteView.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanelNoteView.ColumnCount = 2;
-            this.tableLayoutPanelNoteView.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelNoteView.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelNoteView.Controls.Add(this.splitContainer1, 0, 0);
-            this.tableLayoutPanelNoteView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelNoteView.Location = new System.Drawing.Point(205, 0);
-            this.tableLayoutPanelNoteView.Name = "tableLayoutPanelNoteView";
-            this.tableLayoutPanelNoteView.RowCount = 2;
-            this.tableLayoutPanelNoteView.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tableLayoutPanelNoteView.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92F));
-            this.tableLayoutPanelNoteView.Size = new System.Drawing.Size(595, 426);
-            this.tableLayoutPanelNoteView.TabIndex = 1;
-            this.tableLayoutPanelNoteView.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelNoteView_Paint);
+            this.splitter4.BackColor = System.Drawing.Color.LightCyan;
+            this.splitter4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.splitter4.Location = new System.Drawing.Point(201, 0);
+            this.splitter4.Name = "splitter4";
+            this.splitter4.Size = new System.Drawing.Size(1, 700);
+            this.splitter4.TabIndex = 1;
+            this.splitter4.TabStop = false;
             // 
-            // splitContainer1
+            // splitter2
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(4, 4);
-            this.splitContainer1.Name = "splitContainer1";
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.splitter2.Location = new System.Drawing.Point(202, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(1, 700);
+            this.splitter2.TabIndex = 0;
+            this.splitter2.TabStop = false;
             // 
-            // splitContainer1.Panel1
+            // contextMenuStrip1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBoxShowSlideMenu);
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // splitContainer1.Panel2
+            // pictureBoxToggleSidebar
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.textBoxSearchNote);
-            this.splitContainer1.Size = new System.Drawing.Size(290, 27);
-            this.splitContainer1.SplitterDistance = 46;
-            this.splitContainer1.TabIndex = 0;
+            this.pictureBoxToggleSidebar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxToggleSidebar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxToggleSidebar.Image")));
+            this.pictureBoxToggleSidebar.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxToggleSidebar.Name = "pictureBoxToggleSidebar";
+            this.pictureBoxToggleSidebar.Size = new System.Drawing.Size(31, 27);
+            this.pictureBoxToggleSidebar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxToggleSidebar.TabIndex = 0;
+            this.pictureBoxToggleSidebar.TabStop = false;
+            this.pictureBoxToggleSidebar.Click += new System.EventHandler(this.pictureBoxToggleSidebar_Click);
             // 
-            // pictureBoxShowSlideMenu
+            // pictureBoxTrash
             // 
-            this.pictureBoxShowSlideMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBoxShowSlideMenu.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxShowSlideMenu.Image")));
-            this.pictureBoxShowSlideMenu.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxShowSlideMenu.Name = "pictureBoxShowSlideMenu";
-            this.pictureBoxShowSlideMenu.Size = new System.Drawing.Size(43, 27);
-            this.pictureBoxShowSlideMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxShowSlideMenu.TabIndex = 0;
-            this.pictureBoxShowSlideMenu.TabStop = false;
-            this.pictureBoxShowSlideMenu.Click += new System.EventHandler(this.pictureBoxShowSlideMenu_Click);
+            this.pictureBoxTrash.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxTrash.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTrash.Image")));
+            this.pictureBoxTrash.Location = new System.Drawing.Point(661, 3);
+            this.pictureBoxTrash.Name = "pictureBoxTrash";
+            this.pictureBoxTrash.Size = new System.Drawing.Size(39, 27);
+            this.pictureBoxTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxTrash.TabIndex = 1;
+            this.pictureBoxTrash.TabStop = false;
             // 
-            // textBoxSearchNote
+            // pictureBoxSlideMenu
             // 
-            this.textBoxSearchNote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSearchNote.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSearchNote.Location = new System.Drawing.Point(0, 0);
-            this.textBoxSearchNote.Name = "textBoxSearchNote";
-            this.textBoxSearchNote.Size = new System.Drawing.Size(240, 27);
-            this.textBoxSearchNote.TabIndex = 0;
+            this.pictureBoxSlideMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxSlideMenu.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSlideMenu.Image")));
+            this.pictureBoxSlideMenu.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxSlideMenu.Name = "pictureBoxSlideMenu";
+            this.pictureBoxSlideMenu.Size = new System.Drawing.Size(47, 27);
+            this.pictureBoxSlideMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSlideMenu.TabIndex = 0;
+            this.pictureBoxSlideMenu.TabStop = false;
+            this.pictureBoxSlideMenu.Click += new System.EventHandler(this.pictureBoxSlideMenu_Click);
             // 
-            // timer1
+            // pictureBoxNewNote
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.pictureBoxNewNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxNewNote.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNewNote.Image")));
+            this.pictureBoxNewNote.Location = new System.Drawing.Point(299, 3);
+            this.pictureBoxNewNote.Name = "pictureBoxNewNote";
+            this.pictureBoxNewNote.Size = new System.Drawing.Size(39, 27);
+            this.pictureBoxNewNote.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxNewNote.TabIndex = 1;
+            this.pictureBoxNewNote.TabStop = false;
+            // 
+            // pictureBoxTrashNote
+            // 
+            this.pictureBoxTrashNote.Image = global::SimpleNote.Properties.Resources.trash_note_icon;
+            this.pictureBoxTrashNote.Location = new System.Drawing.Point(3, 70);
+            this.pictureBoxTrashNote.Name = "pictureBoxTrashNote";
+            this.pictureBoxTrashNote.Size = new System.Drawing.Size(197, 44);
+            this.pictureBoxTrashNote.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxTrashNote.TabIndex = 3;
+            this.pictureBoxTrashNote.TabStop = false;
+            // 
+            // pictureBoxAllNote
+            // 
+            this.pictureBoxAllNote.Image = global::SimpleNote.Properties.Resources.all_note_icon;
+            this.pictureBoxAllNote.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxAllNote.Name = "pictureBoxAllNote";
+            this.pictureBoxAllNote.Size = new System.Drawing.Size(197, 44);
+            this.pictureBoxAllNote.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAllNote.TabIndex = 2;
+            this.pictureBoxAllNote.TabStop = false;
+            this.pictureBoxAllNote.Click += new System.EventHandler(this.pictureBoxAllNote_Click);
+            // 
+            // richTextBoxDescription
+            // 
+            this.richTextBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxDescription.Font = new System.Drawing.Font("Calibri", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxDescription.Location = new System.Drawing.Point(0, 33);
+            this.richTextBoxDescription.Name = "richTextBoxDescription";
+            this.richTextBoxDescription.Size = new System.Drawing.Size(703, 667);
+            this.richTextBoxDescription.TabIndex = 3;
+            this.richTextBoxDescription.Text = "";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1254, 729);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -203,13 +368,19 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanelNoteView.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShowSlideMenu)).EndInit();
+            this.panelAllNote.ResumeLayout(false);
+            this.panelNoteDescription.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panelNoteReview.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.panelSlideMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxToggleSidebar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrash)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSlideMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTrashNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAllNote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,10 +397,23 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelSlideMenu;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelNoteView;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.PictureBox pictureBoxShowSlideMenu;
-        private System.Windows.Forms.TextBox textBoxSearchNote;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Splitter splitter2;
+        private System.Windows.Forms.Panel panelAllNote;
+        private System.Windows.Forms.Splitter splitter3;
+        private System.Windows.Forms.Panel panelNoteDescription;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBoxToggleSidebar;
+        private System.Windows.Forms.PictureBox pictureBoxTrash;
+        private System.Windows.Forms.Panel panelNoteReview;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBoxSlideMenu;
+        private System.Windows.Forms.PictureBox pictureBoxNewNote;
+        private System.Windows.Forms.TextBox textBoxNoteSearch;
+        private System.Windows.Forms.Splitter splitter4;
+        private System.Windows.Forms.PictureBox pictureBoxAllNote;
+        private System.Windows.Forms.PictureBox pictureBoxTrashNote;
+        private System.Windows.Forms.RichTextBox richTextBoxDescription;
     }
 }
