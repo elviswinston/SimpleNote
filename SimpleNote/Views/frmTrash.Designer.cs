@@ -37,6 +37,7 @@
             this.btnRestoreTrash = new System.Windows.Forms.Button();
             this.btnDeleteTrash = new System.Windows.Forms.Button();
             this.panelTrashNoteReview = new System.Windows.Forms.Panel();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxNewNote = new System.Windows.Forms.PictureBox();
             this.textBoxTrashNoteSearch = new System.Windows.Forms.TextBox();
@@ -124,6 +125,7 @@
             this.btnRestoreTrash.Text = "Restore Note";
             this.btnRestoreTrash.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRestoreTrash.UseVisualStyleBackColor = false;
+            this.btnRestoreTrash.Click += new System.EventHandler(this.btnRestoreTrash_Click);
             // 
             // btnDeleteTrash
             // 
@@ -139,17 +141,31 @@
             this.btnDeleteTrash.TabIndex = 1;
             this.btnDeleteTrash.Text = "Delete Forever";
             this.btnDeleteTrash.UseVisualStyleBackColor = false;
+            this.btnDeleteTrash.Click += new System.EventHandler(this.btnDeleteTrash_Click);
             // 
             // panelTrashNoteReview
             // 
             this.panelTrashNoteReview.BackColor = System.Drawing.Color.White;
             this.panelTrashNoteReview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTrashNoteReview.Controls.Add(this.checkedListBox1);
             this.panelTrashNoteReview.Controls.Add(this.tableLayoutPanel2);
             this.panelTrashNoteReview.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelTrashNoteReview.Location = new System.Drawing.Point(0, 0);
             this.panelTrashNoteReview.Name = "panelTrashNoteReview";
             this.panelTrashNoteReview.Size = new System.Drawing.Size(343, 565);
             this.panelTrashNoteReview.TabIndex = 3;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.checkedListBox1.Font = new System.Drawing.Font("Calibri", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(0, 33);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(289, 530);
+            this.checkedListBox1.TabIndex = 2;
+            this.checkedListBox1.Click += new System.EventHandler(this.checkedListBox1_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -223,7 +239,6 @@
         private System.Windows.Forms.Panel panelAllNote;
         private System.Windows.Forms.Splitter splitter3;
         private System.Windows.Forms.Panel panelNoteDescription;
-        private System.Windows.Forms.RichTextBox richTextBoxTrashDescription;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panelTrashNoteReview;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -231,5 +246,7 @@
         private System.Windows.Forms.TextBox textBoxTrashNoteSearch;
         private System.Windows.Forms.Button btnRestoreTrash;
         private System.Windows.Forms.Button btnDeleteTrash;
+        public System.Windows.Forms.RichTextBox richTextBoxTrashDescription;
+        public System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }

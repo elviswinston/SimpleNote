@@ -15,9 +15,12 @@ namespace SimpleNote.Views
     {
         private uint ID;
 
-        frmTrash trash = new frmTrash();
-        List<Note> lstNote = new List<Note>();
-        List<Note> lstTrash = new List<Note>();
+        
+
+        public static List<Note> lstNote;
+        public static List<Note> lstTrash;
+
+        
 
         string s = "New Note...";
 
@@ -29,8 +32,14 @@ namespace SimpleNote.Views
             InitializeComponent();
             this.ID = 0;
 
+            lstNote = new List<Note>();
+            lstTrash = new List<Note>();
+
+            
+
             fRegular = FontStyle.Regular;
             fItalic = FontStyle.Italic;
+
 
         }
 
@@ -39,6 +48,8 @@ namespace SimpleNote.Views
             this.panelSlideMenu.Hide();
 
             this.ID = 1;
+
+            formReload();
         }
 
         
@@ -74,10 +85,21 @@ namespace SimpleNote.Views
             }
         }
 
+        private void formReload()
+        {
+            for (int i = 0; i < lstNote.Count; i++)
+            {
+                this.checkedListBoxNote.Items.Add(lstNote[i].description);
+                this.richTextBoxDescription.Text = lstNote[i].description;
+            }
+        }
+
         private void pictureBoxAllNote_Click(object sender, EventArgs e)
         {
+            
             this.panelSlideMenu.Hide();
-            trash.Hide();
+            //trash.Hide();
+            formReload();
         }
 
         private void textBoxNoteSearch_Enter(object sender, EventArgs e)
@@ -123,7 +145,8 @@ namespace SimpleNote.Views
 
         private void pictureBoxTrashNote_Click(object sender, EventArgs e)
         {
-
+            frmTrash trash = new frmTrash();
+            //this.trash.MdiParent = this;
             trash.Show();
         }
 
@@ -156,7 +179,7 @@ namespace SimpleNote.Views
                 this.ID += 1;
                 note.ID = this.ID;
 
-                this.lstNote.Add(note);
+                lstNote.Add(note);
             }
 
 
@@ -181,7 +204,10 @@ namespace SimpleNote.Views
 
             this.richTextBoxDescription.Font = new Font(this.richTextBoxDescription.Font, fRegular);
             this.richTextBoxDescription.ForeColor = Color.Black;
-            this.richTextBoxDescription.Text = lstNote[this.checkedListBoxNote.SelectedIndex].description;
+            if (this.checkedListBoxNote.SelectedIndex < 0)
+                return;
+            else
+                this.richTextBoxDescription.Text = lstNote[this.checkedListBoxNote.SelectedIndex].description;
         }
 
         private void richTextBoxDescription_TextChanged(object sender, EventArgs e)
@@ -206,6 +232,34 @@ namespace SimpleNote.Views
             //}
         }
 
+        private void pictureBoxTrash_Click(object sender, EventArgs e)
+        {
+            if (this.checkedListBoxNote.CheckedItems.Count == 0)
+            {
+                lstTrash.Add(lstNote[this.checkedListBoxNote.SelectedIndex]);
+                lstNote.RemoveAt(this.checkedListBoxNote.SelectedIndex);
+                this.checkedListBoxNote.Items.Remove(this.checkedListBoxNote.SelectedItem);
+                this.richTextBoxDescription.Clear();
+            }
+            else
+            {
+                foreach (var item in this.checkedListBoxNote.CheckedItems.OfType<string>().ToList())
+                {
+                    int a = this.checkedListBoxNote.Items.IndexOf(item);
+                    lstTrash.Add(lstNote[a]);
+                    this.checkedListBoxNote.Items.RemoveAt(a);
+                    lstNote.RemoveAt(a);
 
+                    this.richTextBoxDescription.Clear();
+
+                }
+            }
+            
+
+        }
+
+        private void frmMain_MdiChildActivate(object sender, EventArgs e)
+        {
+        }
     }
 }
