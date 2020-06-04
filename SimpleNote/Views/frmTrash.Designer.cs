@@ -56,13 +56,15 @@
             this.panelAllNote.Controls.Add(this.panelTrashNoteReview);
             this.panelAllNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAllNote.Location = new System.Drawing.Point(0, 0);
+            this.panelAllNote.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panelAllNote.Name = "panelAllNote";
-            this.panelAllNote.Size = new System.Drawing.Size(915, 565);
+            this.panelAllNote.Size = new System.Drawing.Size(914, 565);
             this.panelAllNote.TabIndex = 5;
             // 
             // splitter3
             // 
             this.splitter3.Location = new System.Drawing.Point(343, 0);
+            this.splitter3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.splitter3.Name = "splitter3";
             this.splitter3.Size = new System.Drawing.Size(1, 565);
             this.splitter3.TabIndex = 5;
@@ -76,8 +78,9 @@
             this.panelNoteDescription.Controls.Add(this.tableLayoutPanel1);
             this.panelNoteDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelNoteDescription.Location = new System.Drawing.Point(343, 0);
+            this.panelNoteDescription.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panelNoteDescription.Name = "panelNoteDescription";
-            this.panelNoteDescription.Size = new System.Drawing.Size(572, 565);
+            this.panelNoteDescription.Size = new System.Drawing.Size(571, 565);
             this.panelNoteDescription.TabIndex = 4;
             // 
             // richTextBoxTrashDescription
@@ -87,9 +90,10 @@
             this.richTextBoxTrashDescription.Font = new System.Drawing.Font("Calibri", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxTrashDescription.ForeColor = System.Drawing.Color.Black;
             this.richTextBoxTrashDescription.Location = new System.Drawing.Point(0, 35);
+            this.richTextBoxTrashDescription.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.richTextBoxTrashDescription.Name = "richTextBoxTrashDescription";
             this.richTextBoxTrashDescription.ReadOnly = true;
-            this.richTextBoxTrashDescription.Size = new System.Drawing.Size(570, 528);
+            this.richTextBoxTrashDescription.Size = new System.Drawing.Size(569, 528);
             this.richTextBoxTrashDescription.TabIndex = 3;
             this.richTextBoxTrashDescription.Text = "";
             // 
@@ -99,15 +103,16 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tableLayoutPanel1.Controls.Add(this.btnRestoreTrash, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDeleteTrash, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(570, 35);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(569, 35);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // btnRestoreTrash
@@ -118,9 +123,10 @@
             this.btnRestoreTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRestoreTrash.Font = new System.Drawing.Font("Calibri", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRestoreTrash.ForeColor = System.Drawing.Color.White;
-            this.btnRestoreTrash.Location = new System.Drawing.Point(432, 3);
+            this.btnRestoreTrash.Location = new System.Drawing.Point(431, 3);
+            this.btnRestoreTrash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnRestoreTrash.Name = "btnRestoreTrash";
-            this.btnRestoreTrash.Size = new System.Drawing.Size(135, 29);
+            this.btnRestoreTrash.Size = new System.Drawing.Size(136, 29);
             this.btnRestoreTrash.TabIndex = 0;
             this.btnRestoreTrash.Text = "Restore Note";
             this.btnRestoreTrash.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -135,9 +141,10 @@
             this.btnDeleteTrash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteTrash.Font = new System.Drawing.Font("Calibri", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteTrash.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteTrash.Location = new System.Drawing.Point(289, 3);
+            this.btnDeleteTrash.Location = new System.Drawing.Point(288, 3);
+            this.btnDeleteTrash.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnDeleteTrash.Name = "btnDeleteTrash";
-            this.btnDeleteTrash.Size = new System.Drawing.Size(137, 29);
+            this.btnDeleteTrash.Size = new System.Drawing.Size(139, 29);
             this.btnDeleteTrash.TabIndex = 1;
             this.btnDeleteTrash.Text = "Delete Forever";
             this.btnDeleteTrash.UseVisualStyleBackColor = false;
@@ -151,6 +158,7 @@
             this.panelTrashNoteReview.Controls.Add(this.tableLayoutPanel2);
             this.panelTrashNoteReview.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelTrashNoteReview.Location = new System.Drawing.Point(0, 0);
+            this.panelTrashNoteReview.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panelTrashNoteReview.Name = "panelTrashNoteReview";
             this.panelTrashNoteReview.Size = new System.Drawing.Size(343, 565);
             this.panelTrashNoteReview.TabIndex = 3;
@@ -162,6 +170,7 @@
             this.checkedListBox1.Font = new System.Drawing.Font("Calibri", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(0, 33);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(289, 530);
             this.checkedListBox1.TabIndex = 2;
@@ -178,6 +187,7 @@
             this.tableLayoutPanel2.Controls.Add(this.textBoxTrashNoteSearch, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -189,9 +199,10 @@
             this.pictureBoxNewNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxNewNote.Enabled = false;
             this.pictureBoxNewNote.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNewNote.Image")));
-            this.pictureBoxNewNote.Location = new System.Drawing.Point(295, 3);
+            this.pictureBoxNewNote.Location = new System.Drawing.Point(294, 3);
+            this.pictureBoxNewNote.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBoxNewNote.Name = "pictureBoxNewNote";
-            this.pictureBoxNewNote.Size = new System.Drawing.Size(43, 27);
+            this.pictureBoxNewNote.Size = new System.Drawing.Size(45, 27);
             this.pictureBoxNewNote.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxNewNote.TabIndex = 1;
             this.pictureBoxNewNote.TabStop = false;
@@ -202,7 +213,8 @@
             this.textBoxTrashNoteSearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxTrashNoteSearch.Font = new System.Drawing.Font("Calibri", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxTrashNoteSearch.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxTrashNoteSearch.Location = new System.Drawing.Point(3, 3);
+            this.textBoxTrashNoteSearch.Location = new System.Drawing.Point(2, 3);
+            this.textBoxTrashNoteSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxTrashNoteSearch.Name = "textBoxTrashNoteSearch";
             this.textBoxTrashNoteSearch.Size = new System.Drawing.Size(286, 29);
             this.textBoxTrashNoteSearch.TabIndex = 2;
@@ -214,11 +226,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 565);
+            this.ClientSize = new System.Drawing.Size(914, 565);
             this.Controls.Add(this.panelAllNote);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "frmTrash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Trash";

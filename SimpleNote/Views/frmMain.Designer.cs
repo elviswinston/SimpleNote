@@ -102,6 +102,7 @@
             this.newNoteToolStripMenuItem.Name = "newNoteToolStripMenuItem";
             this.newNoteToolStripMenuItem.Size = new System.Drawing.Size(145, 24);
             this.newNoteToolStripMenuItem.Text = "New Note";
+            this.newNoteToolStripMenuItem.Click += new System.EventHandler(this.newNoteToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -123,6 +124,7 @@
             this.trashNoteToolStripMenuItem.Name = "trashNoteToolStripMenuItem";
             this.trashNoteToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.trashNoteToolStripMenuItem.Text = "Trash Note";
+            this.trashNoteToolStripMenuItem.Click += new System.EventHandler(this.trashNoteToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -176,11 +178,11 @@
             // 
             this.richTextBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxDescription.Enabled = false;
             this.richTextBoxDescription.Font = new System.Drawing.Font("Calibri", 12.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxDescription.ForeColor = System.Drawing.Color.LightGray;
             this.richTextBoxDescription.Location = new System.Drawing.Point(0, 33);
             this.richTextBoxDescription.Name = "richTextBoxDescription";
+            this.richTextBoxDescription.ReadOnly = true;
             this.richTextBoxDescription.Size = new System.Drawing.Size(703, 564);
             this.richTextBoxDescription.TabIndex = 3;
             this.richTextBoxDescription.Text = "Note text...";
@@ -194,7 +196,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.733333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 94.26667F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxToggleSidebar, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxTrash, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -223,9 +225,9 @@
             this.pictureBoxTrash.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxTrash.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxTrash.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxTrash.Image")));
-            this.pictureBoxTrash.Location = new System.Drawing.Point(647, 3);
+            this.pictureBoxTrash.Location = new System.Drawing.Point(645, 3);
             this.pictureBoxTrash.Name = "pictureBoxTrash";
-            this.pictureBoxTrash.Size = new System.Drawing.Size(53, 27);
+            this.pictureBoxTrash.Size = new System.Drawing.Size(55, 27);
             this.pictureBoxTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxTrash.TabIndex = 1;
             this.pictureBoxTrash.TabStop = false;
@@ -262,7 +264,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18.13953F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 81.86047F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 58F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.Controls.Add(this.pictureBoxSlideMenu, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.pictureBoxNewNote, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBoxNoteSearch, 1, 0);
@@ -281,7 +283,7 @@
             this.pictureBoxSlideMenu.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSlideMenu.Image")));
             this.pictureBoxSlideMenu.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxSlideMenu.Name = "pictureBoxSlideMenu";
-            this.pictureBoxSlideMenu.Size = new System.Drawing.Size(45, 27);
+            this.pictureBoxSlideMenu.Size = new System.Drawing.Size(44, 27);
             this.pictureBoxSlideMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxSlideMenu.TabIndex = 0;
             this.pictureBoxSlideMenu.TabStop = false;
@@ -292,9 +294,9 @@
             this.pictureBoxNewNote.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxNewNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxNewNote.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNewNote.Image")));
-            this.pictureBoxNewNote.Location = new System.Drawing.Point(285, 3);
+            this.pictureBoxNewNote.Location = new System.Drawing.Point(283, 3);
             this.pictureBoxNewNote.Name = "pictureBoxNewNote";
-            this.pictureBoxNewNote.Size = new System.Drawing.Size(53, 27);
+            this.pictureBoxNewNote.Size = new System.Drawing.Size(55, 27);
             this.pictureBoxNewNote.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxNewNote.TabIndex = 1;
             this.pictureBoxNewNote.TabStop = false;
@@ -306,9 +308,9 @@
             this.textBoxNoteSearch.Dock = System.Windows.Forms.DockStyle.Left;
             this.textBoxNoteSearch.Font = new System.Drawing.Font("Calibri", 12.22642F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxNoteSearch.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxNoteSearch.Location = new System.Drawing.Point(54, 3);
+            this.textBoxNoteSearch.Location = new System.Drawing.Point(53, 3);
             this.textBoxNoteSearch.Name = "textBoxNoteSearch";
-            this.textBoxNoteSearch.Size = new System.Drawing.Size(225, 29);
+            this.textBoxNoteSearch.Size = new System.Drawing.Size(224, 29);
             this.textBoxNoteSearch.TabIndex = 2;
             this.textBoxNoteSearch.Text = " All Note";
             this.textBoxNoteSearch.Enter += new System.EventHandler(this.textBoxNoteSearch_Enter);

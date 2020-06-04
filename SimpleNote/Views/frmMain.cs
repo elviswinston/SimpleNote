@@ -49,6 +49,8 @@ namespace SimpleNote.Views
 
             this.ID = 1;
 
+            this.richTextBoxDescription.BackColor = Color.White;
+
             formReload();
         }
 
@@ -154,7 +156,7 @@ namespace SimpleNote.Views
         {
             Note note = new Note();
             
-            this.richTextBoxDescription.Enabled = true;
+            this.richTextBoxDescription.ReadOnly = false;
 
             this.checkedListBoxNote.ForeColor = Color.Black;
             this.checkedListBoxNote.Font = new Font(checkedListBoxNote.Font, fRegular);
@@ -174,7 +176,7 @@ namespace SimpleNote.Views
 
                 this.checkedListBoxNote.Items.Add(this.richTextBoxDescription.Text.Trim());
                 this.richTextBoxDescription.Clear();
-                this.richTextBoxDescription.Enabled = false;
+                this.richTextBoxDescription.ReadOnly = true;
 
                 this.ID += 1;
                 note.ID = this.ID;
@@ -260,6 +262,54 @@ namespace SimpleNote.Views
 
         private void frmMain_MdiChildActivate(object sender, EventArgs e)
         {
+        }
+
+        private void newNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Note note = new Note();
+
+            this.richTextBoxDescription.ReadOnly = false;
+            this.richTextBoxDescription.BackColor = Color.White;
+
+            this.checkedListBoxNote.ForeColor = Color.Black;
+            this.checkedListBoxNote.Font = new Font(checkedListBoxNote.Font, fRegular);
+            if (this.richTextBoxDescription.Text == "Note text..." || this.richTextBoxDescription.Text == "")
+            {
+                this.checkedListBoxNote.ForeColor = Color.LightGray;
+                this.checkedListBoxNote.Font = new Font(checkedListBoxNote.Font, fItalic);
+                this.checkedListBoxNote.Items.Add(s);
+                return;
+            }
+
+            // add note by button new note (cannot save changes to existed note)
+            else
+            {
+                note.description = this.richTextBoxDescription.Text.Trim();
+                note.dateCreated = DateTime.Now;
+
+                this.checkedListBoxNote.Items.Add(this.richTextBoxDescription.Text.Trim());
+                this.richTextBoxDescription.Clear();
+                this.richTextBoxDescription.ReadOnly = true;
+
+                this.ID += 1;
+                note.ID = this.ID;
+
+                lstNote.Add(note);
+            }
+
+
+
+            for (int i = 0; i < this.checkedListBoxNote.Items.Count; i++)
+            {
+                if (this.checkedListBoxNote.Items[i].ToString() == s)
+                    this.checkedListBoxNote.Items.RemoveAt(i);
+            }
+        }
+
+        private void trashNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTrash trash = new frmTrash();
+            trash.Show();
         }
     }
 }
