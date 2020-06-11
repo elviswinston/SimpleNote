@@ -13,8 +13,7 @@ namespace SimpleNote.Views
 {
     public partial class frmMain : Form
     {
-        private uint ID;
-
+        private int ID;
         
 
         public static List<Note> lstNote;
@@ -40,14 +39,14 @@ namespace SimpleNote.Views
             fRegular = FontStyle.Regular;
             fItalic = FontStyle.Italic;
 
-
+            
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.panelSlideMenu.Hide();
 
-            this.ID = 1;
+            this.ID = -1;
 
             this.richTextBoxDescription.BackColor = Color.White;
 
@@ -89,10 +88,23 @@ namespace SimpleNote.Views
 
         private void formReload()
         {
-            for (int i = 0; i < lstNote.Count; i++)
+            for (int i = 0; i < flpNote.Controls.Count; i++)
+                flpNote.Controls[i].Dispose();
+
+            foreach (Note note in lstNote)
             {
-                this.checkedListBoxNote.Items.Add(lstNote[i].description);
-                this.richTextBoxDescription.Text = lstNote[i].description;
+                Button btn = new Button();
+                btn.Dock = DockStyle.Top;
+                btn.Width = 340;
+                btn.Height = 50;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.TextAlign = ContentAlignment.MiddleLeft;
+
+                btn.Text = note.description;
+                btn.Click += Btn_Click;
+
+                this.flpNote.Controls.Add(btn);
             }
         }
 
@@ -106,42 +118,48 @@ namespace SimpleNote.Views
 
         private void textBoxNoteSearch_Enter(object sender, EventArgs e)
         {
+            
             if(this.textBoxNoteSearch.Text == " All Note")
             {
                 this.textBoxNoteSearch.Text = "";
                 this.textBoxNoteSearch.ForeColor = Color.Black;
             }
+            
         }
 
         private void textBoxNoteSearch_Leave(object sender, EventArgs e)
         {
+            /*
             if (this.textBoxNoteSearch.Text == "")
             {
                 this.textBoxNoteSearch.ForeColor = Color.LightGray;
                 this.textBoxNoteSearch.Text = " All Note";
             }
+            */
         }
 
         private void richTextBoxDescription_Enter(object sender, EventArgs e)
         {
-            
+            /*
             if(this.richTextBoxDescription.Text == "Note text...")
             {
                 this.richTextBoxDescription.Text = "";
                 this.richTextBoxDescription.Font = new Font(this.richTextBoxDescription.Font, fRegular);
                 this.richTextBoxDescription.ForeColor = Color.Black;
             }
+            */
         }
 
         private void richTextBoxDescription_Leave(object sender, EventArgs e)
         {
+            /*
             if (this.richTextBoxDescription.Text == "")
             {
                 this.richTextBoxDescription.Text = "Note text...";
                 this.richTextBoxDescription.Font = new Font(this.richTextBoxDescription.Font, fItalic);
                 this.richTextBoxDescription.ForeColor = Color.LightGray;
             }
-
+            */
             
         }
 
@@ -154,46 +172,46 @@ namespace SimpleNote.Views
 
         private void pictureBoxNewNote_Click(object sender, EventArgs e)
         {
-            Note note = new Note();
+            for (int i = 0; i < flpNote.Controls.Count; i++)
+                if (flpNote.Controls[i].Text == "New Note")
+                    return;
+            Button btn = new Button();
+            btn.Dock = DockStyle.Top;
+            btn.Width = 330;
+            btn.Height = 40;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.TextAlign = ContentAlignment.MiddleLeft;
+            btn.Font = new Font("Open Sans", 12, FontStyle.Regular);
+            btn.AutoEllipsis = true;
+           
+            btn.Text = "New Note";
             
-            this.richTextBoxDescription.ReadOnly = false;
+            this.richTextBoxDescription.Text = "";
+            for (int i = 0; i < flpNote.Controls.Count; i++)
+                flpNote.Controls[i].BackColor = Color.White;
 
-            this.checkedListBoxNote.ForeColor = Color.Black;
-            this.checkedListBoxNote.Font = new Font(checkedListBoxNote.Font, fRegular);
-            if (this.richTextBoxDescription.Text == "Note text..." || this.richTextBoxDescription.Text =="")
-            {
-                this.checkedListBoxNote.ForeColor = Color.LightGray;
-                this.checkedListBoxNote.Font = new Font(checkedListBoxNote.Font, fItalic);
-                this.checkedListBoxNote.Items.Add(s);
-                return;
-            }
-
-            // add note by button new note (cannot save changes to existed note)
-            else
-            {
-                note.description = this.richTextBoxDescription.Text.Trim();
-                note.dateCreated = DateTime.Now;
-
-                this.checkedListBoxNote.Items.Add(this.richTextBoxDescription.Text.Trim());
-                this.richTextBoxDescription.Clear();
-                this.richTextBoxDescription.ReadOnly = true;
-
-                this.ID += 1;
-                note.ID = this.ID;
-
-                lstNote.Add(note);
-            }
-
-
-
-            for (int i = 0; i < this.checkedListBoxNote.Items.Count; i++)
-            {
-                if (this.checkedListBoxNote.Items[i].ToString() == s)
-                    this.checkedListBoxNote.Items.RemoveAt(i);
-            }
-
+            
+            btn.BackColor = Color.LightGray;
+            btn.Select();
+            btn.Click += new EventHandler(this.Btn_Click);
+            flpNote.Controls.Add(btn);
+            this.richTextBoxDescription.ForeColor = Color.Black;
+            this.richTextBoxDescription.Font = new Font(this.richTextBoxDescription.Font, FontStyle.Regular);
+            this.ID++;
         }
 
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            for (int i = 0; i < flpNote.Controls.Count; i++)
+                flpNote.Controls[i].BackColor = Color.White;
+                    
+            btn.BackColor = Color.LightGray;
+            //for (int i = 0; i < flpNote.Controls.Count; i++)
+              //  if (flpNote.Controls[i].BackColor == Color.LightGray)
+                    richTextBoxDescription.Text = btn.Text;
+        }
 
         private void checkedListBoxNote_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -202,62 +220,52 @@ namespace SimpleNote.Views
 
         private void checkedListBoxNote_Click(object sender, EventArgs e)
         {
-            this.richTextBoxDescription.Enabled = true;
-
-            this.richTextBoxDescription.Font = new Font(this.richTextBoxDescription.Font, fRegular);
-            this.richTextBoxDescription.ForeColor = Color.Black;
-            if (this.checkedListBoxNote.SelectedIndex < 0)
-                return;
-            else
-                this.richTextBoxDescription.Text = lstNote[this.checkedListBoxNote.SelectedIndex].description;
+ 
         }
 
         private void richTextBoxDescription_TextChanged(object sender, EventArgs e)
         {
+            if (flpNote.Controls.Count <= 0)
+                return;
             // add note & save note by changing text (?)
+            if (richTextBoxDescription.Text.Length > 0)
+            {
+                Note note = new Note();
+                note.ID = this.ID;
+                note.description = this.richTextBoxDescription.Text.Trim();
+                note.dateCreated = DateTime.Now;
+
+                int index = 0;
+
+                for (int i = 0; i < flpNote.Controls.Count; i++)
+                    if (flpNote.Controls[i].BackColor == Color.LightGray)
+                    {
+                        index = i;
+                        break;
+                    }
+                flpNote.Controls[index].Text = note.description;
+                foreach (Note n in lstNote)
+                    if (n.ID == note.ID)
+                    {
+                        n.description = note.description;
+                        return;
+                    }
+                        
+                lstNote.Add(note);
+            }
             
-            //Note note = new Note();
-
-            //note.description = this.richTextBoxDescription.Text.Trim();
-            //note.dateCreated = DateTime.Now;
-            ////this.richTextBoxDescription.Clear();
-
-            //this.lstNote.Add(note);
-
-            //this.checkedListBoxNote.Items.Add(note.description);
-
-
-            //for (int i = 1; i < this.checkedListBoxNote.Items.Count; i++)
-            //{
-            //    if (this.checkedListBoxNote.Items[i].ToString() == s)
-            //        this.checkedListBoxNote.Items.RemoveAt(i);
-            //}
         }
 
         private void pictureBoxTrash_Click(object sender, EventArgs e)
         {
-            if (this.checkedListBoxNote.CheckedItems.Count == 0)
-            {
-                lstTrash.Add(lstNote[this.checkedListBoxNote.SelectedIndex]);
-                lstNote.RemoveAt(this.checkedListBoxNote.SelectedIndex);
-                this.checkedListBoxNote.Items.Remove(this.checkedListBoxNote.SelectedItem);
-                this.richTextBoxDescription.Clear();
-            }
-            else
-            {
-                foreach (var item in this.checkedListBoxNote.CheckedItems.OfType<string>().ToList())
+            for (int i = 0; i < flpNote.Controls.Count; i++)
+                if (flpNote.Controls[i].BackColor == Color.LightGray)
                 {
-                    int a = this.checkedListBoxNote.Items.IndexOf(item);
-                    lstTrash.Add(lstNote[a]);
-                    this.checkedListBoxNote.Items.RemoveAt(a);
-                    lstNote.RemoveAt(a);
-
-                    this.richTextBoxDescription.Clear();
-
-                }
-            }
-            
-
+                    frmTrash.lstTrash.Add(lstNote[i]);
+                    lstNote.Remove(lstNote[i]);
+                    flpNote.Controls.Remove(flpNote.Controls[i]);
+                    this.richTextBoxDescription.Text = "";
+                }         
         }
 
         private void frmMain_MdiChildActivate(object sender, EventArgs e)
@@ -266,50 +274,46 @@ namespace SimpleNote.Views
 
         private void newNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Note note = new Note();
+            for (int i = 0; i < flpNote.Controls.Count; i++)
+                if (flpNote.Controls[i].Text == "New Note")
+                    return;
+            Button btn = new Button();
+            btn.Dock = DockStyle.Top;
+            btn.Width = 340;
+            btn.Height = 50;
+            btn.FlatStyle = FlatStyle.Flat;
+            btn.FlatAppearance.BorderSize = 0;
+            btn.TextAlign = ContentAlignment.MiddleLeft;
 
-            this.richTextBoxDescription.ReadOnly = false;
-            this.richTextBoxDescription.BackColor = Color.White;
+            btn.Text = "New Note";
 
-            this.checkedListBoxNote.ForeColor = Color.Black;
-            this.checkedListBoxNote.Font = new Font(checkedListBoxNote.Font, fRegular);
-            if (this.richTextBoxDescription.Text == "Note text..." || this.richTextBoxDescription.Text == "")
-            {
-                this.checkedListBoxNote.ForeColor = Color.LightGray;
-                this.checkedListBoxNote.Font = new Font(checkedListBoxNote.Font, fItalic);
-                this.checkedListBoxNote.Items.Add(s);
-                return;
-            }
-
-            // add note by button new note (cannot save changes to existed note)
-            else
-            {
-                note.description = this.richTextBoxDescription.Text.Trim();
-                note.dateCreated = DateTime.Now;
-
-                this.checkedListBoxNote.Items.Add(this.richTextBoxDescription.Text.Trim());
-                this.richTextBoxDescription.Clear();
-                this.richTextBoxDescription.ReadOnly = true;
-
-                this.ID += 1;
-                note.ID = this.ID;
-
-                lstNote.Add(note);
-            }
+            this.richTextBoxDescription.Text = "";
+            for (int i = 0; i < flpNote.Controls.Count; i++)
+                flpNote.Controls[i].BackColor = Color.White;
 
 
-
-            for (int i = 0; i < this.checkedListBoxNote.Items.Count; i++)
-            {
-                if (this.checkedListBoxNote.Items[i].ToString() == s)
-                    this.checkedListBoxNote.Items.RemoveAt(i);
-            }
+            btn.BackColor = Color.LightGray;
+            btn.Select();
+            btn.Click += new EventHandler(this.Btn_Click);
+            flpNote.Controls.Add(btn);
+            this.richTextBoxDescription.ForeColor = Color.Black;
+            this.richTextBoxDescription.Font = new Font(this.richTextBoxDescription.Font, FontStyle.Regular);
+            this.ID++;
         }
 
         private void trashNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmTrash trash = new frmTrash();
             trash.Show();
+        }
+
+        private void textBoxNoteSearch_TextChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < flpNote.Controls.Count; i++)
+                if (flpNote.Controls[i].Text.Length > 0)
+                    if (!flpNote.Controls[i].Text.Contains(textBoxNoteSearch.Text))
+                        flpNote.Controls[i].Hide();
+                    else flpNote.Controls[i].Show();
         }
     }
 }

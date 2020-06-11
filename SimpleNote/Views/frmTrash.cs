@@ -13,12 +13,12 @@ namespace SimpleNote.Views
 {
     public partial class frmTrash : Form
     {
-        public static List<Note> lstTrash;
+        public static List<Note> lstTrash = new List<Note>();
 
         public frmTrash()
         {
             InitializeComponent();
-
+            
         }
 
         private void textBoxTrashNoteSearch_Enter(object sender, EventArgs e)
@@ -45,46 +45,69 @@ namespace SimpleNote.Views
             {
                 this.richTextBoxTrashDescription.BackColor = Color.White;
             }
-            for (int i = 0; i < frmMain.lstTrash.Count; i++)
-            {
-                this.checkedListBox1.Items.Add(frmMain.lstTrash[i].description);
-            }
             
+            foreach (Note note in lstTrash)
+            {
+                Button btn = new Button();
+                btn.Dock = DockStyle.Top;
+                btn.Width = 340;
+                btn.Height = 50;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.TextAlign = ContentAlignment.MiddleLeft;
+
+                btn.Text = note.description;
+                btn.Click += Btn_Click;
+
+                this.flpTrash.Controls.Add(btn);
+            }
         }
 
-        
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            for (int i = 0; i < flpTrash.Controls.Count; i++)
+                flpTrash.Controls[i].BackColor = Color.White;
+
+            btn.BackColor = Color.LightGray;
+            this.richTextBoxTrashDescription.Text = btn.Text;
+        }
 
         private void btnDeleteTrash_Click(object sender, EventArgs e)
         {
-            if(this.checkedListBox1.CheckedItems.Count == 0)
-            {
-                frmMain.lstTrash.RemoveAt(this.checkedListBox1.SelectedIndex);
-                this.checkedListBox1.Items.RemoveAt(this.checkedListBox1.SelectedIndex);
-                this.richTextBoxTrashDescription.Clear();
-            }
-            else
-            {
-                foreach (var item in this.checkedListBox1.CheckedItems.OfType<string>().ToList())
+            for (int i = 0; i < this.flpTrash.Controls.Count; i++)
+                if (this.flpTrash.Controls[i].BackColor == Color.LightGray)
                 {
-                    int a = this.checkedListBox1.Items.IndexOf(item);
-                    frmMain.lstTrash.RemoveAt(a);
-                    this.checkedListBox1.Items.Remove(item);
-                    this.richTextBoxTrashDescription.Clear();
+                    this.flpTrash.Controls.Remove(this.flpTrash.Controls[i]);
+                    lstTrash.Remove(lstTrash[i]);
                 }
-            }
+            this.richTextBoxTrashDescription.Text = "";
         }
 
         private void checkedListBox1_Click(object sender, EventArgs e)
         {
-            this.richTextBoxTrashDescription.Text = frmMain.lstTrash[this.checkedListBox1.SelectedIndex].description;
+            
         }
 
         private void btnRestoreTrash_Click(object sender, EventArgs e)
         {
-            frmMain.lstNote.Add(frmMain.lstTrash[this.checkedListBox1.SelectedIndex]);
-            frmMain.lstTrash.RemoveAt(this.checkedListBox1.SelectedIndex);
-            this.checkedListBox1.Items.RemoveAt(this.checkedListBox1.SelectedIndex);
-            this.richTextBoxTrashDescription.Clear();
+            for (int i = 0; i < flpTrash.Controls.Count; i++)
+                if (flpTrash.Controls[i].BackColor == Color.LightGray)
+                {
+                    frmMain.lstNote.Add(lstTrash[i]);
+                    lstTrash.Remove(lstTrash[i]);
+                    flpTrash.Controls.Remove(flpTrash.Controls[i]);
+                    this.richTextBoxTrashDescription.Text = "";
+                }
+        }
+
+        private void textBoxTrashNoteSearch_TextChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < flpTrash.Controls.Count; i++)
+                if (flpTrash.Controls[i].Text.Length > 0)
+                    if (!flpTrash.Controls[i].Text.Contains(textBoxTrashNoteSearch.Text))
+                        flpTrash.Controls[i].Hide();
+                    else flpTrash.Controls[i].Show();
         }
     }
 }
