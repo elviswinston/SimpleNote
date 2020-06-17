@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SimpleNote.Controllers;
 using SimpleNote.Models;
 
 namespace SimpleNote.Views
@@ -46,7 +47,7 @@ namespace SimpleNote.Views
                 this.richTextBoxTrashDescription.BackColor = Color.White;
             }
             
-            foreach (Note note in lstTrash)
+            foreach (Trash trash in TrashController.GetListTrash())
             {
                 Button btn = new Button();
                 btn.Dock = DockStyle.Top;
@@ -55,8 +56,10 @@ namespace SimpleNote.Views
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.FlatAppearance.BorderSize = 0;
                 btn.TextAlign = ContentAlignment.MiddleLeft;
+                btn.Font = new Font("Open Sans", 12, FontStyle.Regular);
+                btn.Padding = new Padding(10, 0, 0, 0);
 
-                btn.Text = note.description;
+                btn.Text = trash.description;
                 btn.Click += Btn_Click;
 
                 this.flpTrash.Controls.Add(btn);
@@ -78,8 +81,10 @@ namespace SimpleNote.Views
             for (int i = 0; i < this.flpTrash.Controls.Count; i++)
                 if (this.flpTrash.Controls[i].BackColor == Color.LightGray)
                 {
-                    this.flpTrash.Controls.Remove(this.flpTrash.Controls[i]);
-                    lstTrash.Remove(lstTrash[i]);
+                    TrashController.RefreshTrash();
+                    Trash trash = TrashController.GetTrash(i);                
+                    TrashController.DeleteForever(trash);
+                    flpTrash.Controls.Remove(flpTrash.Controls[i]);
                 }
             this.richTextBoxTrashDescription.Text = "";
         }
@@ -91,11 +96,23 @@ namespace SimpleNote.Views
 
         private void btnRestoreTrash_Click(object sender, EventArgs e)
         {
+            
             for (int i = 0; i < flpTrash.Controls.Count; i++)
                 if (flpTrash.Controls[i].BackColor == Color.LightGray)
                 {
-                    frmMain.lstNote.Add(lstTrash[i]);
-                    lstTrash.Remove(lstTrash[i]);
+                    TrashController.RefreshTrash();
+                    Trash trash = TrashController.GetTrash(i);
+                    Note note = new Note();
+
+                    note.ID = NoteController.GetListNote().Count;
+                    note.description = trash.description;
+                    note.dateCreated = trash.dateCreated;
+                    note.tags = trash.tags;
+
+                    TrashController.DeleteForever(trash);
+                    NoteController.AddNote(note);
+
+
                     flpTrash.Controls.Remove(flpTrash.Controls[i]);
                     this.richTextBoxTrashDescription.Text = "";
                 }

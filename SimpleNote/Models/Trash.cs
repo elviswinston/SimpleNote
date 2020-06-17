@@ -12,7 +12,7 @@ namespace SimpleNote.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Note
+    public partial class Trash
     {
         public int ID { get; set; }
         public string description { get; set; }
