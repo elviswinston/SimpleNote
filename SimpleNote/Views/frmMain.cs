@@ -45,11 +45,29 @@ namespace SimpleNote.Views
                 btn.FlatAppearance.BorderSize = 0;
                 btn.TextAlign = ContentAlignment.MiddleLeft;
                 btn.Font = new Font("Open Sans", 12, FontStyle.Regular);
+                btn.Padding = new Padding(10, 0, 0, 0);
 
                 btn.Text = note.description;
-                btn.Click += Btn_Click;              
+                btn.Click += Btn_Click;
+
+                CheckBox checkbox = new CheckBox();
+                if (note.isPinned == true)
+                    checkbox.Checked = true;
+                checkbox.Text = "";
+                checkbox.AutoSize = true;
+                checkbox.Dock = DockStyle.Left;
+                checkbox.CheckedChanged += Checkbox_CheckedChanged;
+
+                btn.Controls.Add(checkbox);
 
                 this.flpNote.Controls.Add(btn);
+
+                if (checkbox.Checked)
+                {
+                    NoteController.MoveToFirst(note.ID);
+                    this.flpNote.Controls.SetChildIndex(checkbox.Parent, 0);
+                }
+
                 this.ID++;
             }
 
@@ -62,7 +80,21 @@ namespace SimpleNote.Views
 
         private void Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            CheckBox checkbox = sender as CheckBox;
+            var index = 0;
+            foreach (Note note in NoteController.GetListNote())
+                if (note.description == checkbox.Parent.Text)
+                    index = note.ID;
 
+            if (checkbox.Checked)
+            {
+                NoteController.MoveToFirst(index);
+                this.flpNote.Controls.SetChildIndex(checkbox.Parent, 0);
+            } else
+            {
+                NoteController.MoveToLast(index);
+                this.flpNote.Controls.SetChildIndex(checkbox.Parent, NoteController.GetListNote().Count);
+            }
         }
 
         private void TextBoxTags_LostFocus(object sender, EventArgs e)
@@ -142,7 +174,23 @@ namespace SimpleNote.Views
                     btn.Text = NoteController.GetListNote()[i].description;
                     btn.Click += Btn_Click;
 
+                    CheckBox checkbox = new CheckBox();
+                    if (NoteController.GetListNote()[i].isPinned == true)
+                        checkbox.Checked = true;
+                    checkbox.Text = "";
+                    checkbox.AutoSize = true;
+                    checkbox.Dock = DockStyle.Left;
+                    checkbox.CheckedChanged += Checkbox_CheckedChanged;
+
+                    btn.Controls.Add(checkbox);
+
                     this.flpNote.Controls.Add(btn);
+
+                    if (checkbox.Checked)
+                    {
+                        NoteController.MoveToFirst(NoteController.GetListNote()[i].ID);
+                        this.flpNote.Controls.SetChildIndex(checkbox.Parent, 0);
+                    }
                 }
         }
 
@@ -204,6 +252,7 @@ namespace SimpleNote.Views
             btn.TextAlign = ContentAlignment.MiddleLeft;
             btn.Font = new Font("Open Sans", 12, FontStyle.Regular);
             btn.AutoEllipsis = true;
+            btn.Padding = new Padding(10, 0, 0, 0);
 
             btn.Text = "New Note";
 
@@ -215,6 +264,15 @@ namespace SimpleNote.Views
             btn.BackColor = Color.LightGray;
             btn.Select();
             btn.Click += new EventHandler(this.Btn_Click);
+
+            CheckBox checkbox = new CheckBox();
+            checkbox.Text = "";
+            checkbox.AutoSize = true;
+            checkbox.Dock = DockStyle.Left;
+            checkbox.CheckedChanged += Checkbox_CheckedChanged;
+
+            btn.Controls.Add(checkbox);
+
             flpNote.Controls.Add(btn);
 
             this.richTextBoxDescription.Focus();
@@ -336,7 +394,7 @@ namespace SimpleNote.Views
                 Note note = new Note();
 
                 note.description = this.richTextBoxDescription.Text.Trim();
-                note.dateCreated = DateTime.Now;
+                
 
                 for (int i = 0; i < flpNote.Controls.Count; i++)
                     if (flpNote.Controls[i].BackColor == Color.LightGray)
@@ -344,9 +402,12 @@ namespace SimpleNote.Views
                         if (NoteController.GetNote(i) is null)
                         {
                             note.tags = "";
+                            note.dateCreated = DateTime.Now;
                             break;
                         }
                         Note n = NoteController.GetNote(i);
+                        note.dateCreated = n.dateCreated;
+                        note.isPinned = n.isPinned;
                         if (string.IsNullOrEmpty(n.tags))
                             note.tags = "";
                         else note.tags = n.tags;
@@ -386,10 +447,11 @@ namespace SimpleNote.Views
                     Trash trash = new Trash();
                     Note note = NoteController.GetNote(i);
 
-                    trash.ID = note.ID;
+                    trash.ID = TrashController.GetListTrash().Count;
                     trash.description = note.description;
                     trash.dateCreated = note.dateCreated;
-                    trash.tags = note.tags;                   
+                    trash.tags = note.tags;
+                    trash.isPinned = note.isPinned;
 
                     TrashController.AddTrash(trash);
                     NoteController.RemoveNote(note);
@@ -417,14 +479,21 @@ namespace SimpleNote.Views
         {
             for (int i = 0; i < flpNote.Controls.Count; i++)
                 if (flpNote.Controls[i].Text == "New Note")
+                {
+                    MessageBox.Show("Already has the new note that doesn't have a description, please enter the description for the note before add new note",
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
+                }
             Button btn = new Button();
             btn.Dock = DockStyle.Top;
-            btn.Width = 340;
-            btn.Height = 50;
+            btn.Width = 330;
+            btn.Height = 40;
             btn.FlatStyle = FlatStyle.Flat;
             btn.FlatAppearance.BorderSize = 0;
             btn.TextAlign = ContentAlignment.MiddleLeft;
+            btn.Font = new Font("Open Sans", 12, FontStyle.Regular);
+            btn.AutoEllipsis = true;
+            btn.Padding = new Padding(10, 0, 0, 0);
 
             btn.Text = "New Note";
 
@@ -436,6 +505,15 @@ namespace SimpleNote.Views
             btn.BackColor = Color.LightGray;
             btn.Select();
             btn.Click += new EventHandler(this.Btn_Click);
+
+            CheckBox checkbox = new CheckBox();
+            checkbox.Text = "";
+            checkbox.AutoSize = true;
+            checkbox.Dock = DockStyle.Left;
+            checkbox.CheckedChanged += Checkbox_CheckedChanged;
+
+            btn.Controls.Add(checkbox);
+
             flpNote.Controls.Add(btn);
 
             this.richTextBoxDescription.Focus();

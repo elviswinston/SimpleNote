@@ -59,6 +59,7 @@ namespace SimpleNote.Controllers
                                 description = x.description,
                                 dateCreated = x.dateCreated,
                                 tags = x.tags,
+                                isPinned = x.isPinned
                             }).ToList();
 
                 return note;
@@ -110,6 +111,7 @@ namespace SimpleNote.Controllers
                                 description = x.description,
                                 dateCreated = x.dateCreated,
                                 tags = x.tags,
+                                isPinned = x.isPinned
                             }).ToList();
 
                 
@@ -129,6 +131,92 @@ namespace SimpleNote.Controllers
                 _context.SaveChanges();
                 return true;
             }
-        }      
+        }
+
+
+        public static bool MoveToFirst(int ID)
+        {
+            using (var _context = new DBSimpleNoteEntities())
+            {
+                var newID = 1;
+
+                var noteList = (from n in _context.Notes.AsEnumerable()
+                                select n)
+                            .Select(x => new Note
+                            {
+                                ID = x.ID,
+                                description = x.description,
+                                dateCreated = x.dateCreated,
+                                tags = x.tags,
+                                isPinned = x.isPinned
+                            }).ToList();
+
+
+
+                foreach (Note note in noteList)
+                {
+                    var removeNote = (from n in _context.Notes
+                                      where n.ID == note.ID
+                                      select n).ToList();
+                    if (note.ID == ID)
+                    {
+                        note.ID = 0;
+                        note.isPinned = true;
+                        _context.Notes.Remove(removeNote[0]);
+                        _context.Notes.Add(note);
+                        continue;
+                    }
+                    note.ID = newID;
+                    _context.Notes.Remove(removeNote[0]);
+                    _context.Notes.Add(note);
+                    
+                    newID++;
+                }
+                _context.SaveChanges();
+                return true;
+            }
+        }
+
+        public static bool MoveToLast(int ID)
+        {
+            using (var _context = new DBSimpleNoteEntities())
+            {
+                var newID = 0;
+
+                var noteList = (from n in _context.Notes.AsEnumerable()
+                                select n)
+                            .Select(x => new Note
+                            {
+                                ID = x.ID,
+                                description = x.description,
+                                dateCreated = x.dateCreated,
+                                tags = x.tags,
+                                isPinned = x.isPinned
+                            }).ToList();
+
+                foreach (Note note in noteList)
+                {
+                    var removeNote = (from n in _context.Notes
+                                      where n.ID == note.ID
+                                      select n).ToList();
+                    if (note.ID == ID)
+                    {
+                        note.ID = NoteController.GetListNote().Count - 1;
+                        note.isPinned = false;
+                        _context.Notes.Remove(removeNote[0]);
+                        _context.Notes.Add(note);
+                        continue;
+                    }
+                    note.ID = newID;
+                    _context.Notes.Remove(removeNote[0]);
+                    _context.Notes.Add(note);
+                    RefreshNote();
+                    newID++;
+                }
+
+                _context.SaveChanges();
+                return true;
+            }
+        }
     }
 }

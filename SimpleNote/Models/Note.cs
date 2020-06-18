@@ -18,5 +18,6 @@ namespace SimpleNote.Models
         public string description { get; set; }
         public Nullable<System.DateTime> dateCreated { get; set; }
         public string tags { get; set; }
+        public Nullable<bool> isPinned { get; set; }
     }
 }

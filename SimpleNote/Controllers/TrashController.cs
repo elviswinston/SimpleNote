@@ -57,6 +57,7 @@ namespace SimpleNote.Controllers
                                 description = x.description,
                                 dateCreated = x.dateCreated,
                                 tags = x.tags,
+                                isPinned = x.isPinned
                             }).ToList();
 
                 return trash;
@@ -89,6 +90,7 @@ namespace SimpleNote.Controllers
                                 description = x.description,
                                 dateCreated = x.dateCreated,
                                 tags = x.tags,
+                                isPinned = x.isPinned
                             }).ToList();
 
 
@@ -105,6 +107,49 @@ namespace SimpleNote.Controllers
                 }
 
 
+                _context.SaveChanges();
+                return true;
+            }
+        }
+
+        public static bool MoveToFirst(int ID)
+        {
+            using (var _context = new DBSimpleNoteEntities())
+            {
+                var newID = 1;
+
+                var trashList = (from t in _context.Trashes.AsEnumerable()
+                                select t)
+                            .Select(x => new Trash
+                            {
+                                ID = x.ID,
+                                description = x.description,
+                                dateCreated = x.dateCreated,
+                                tags = x.tags,
+                                isPinned = x.isPinned
+                            }).ToList();
+
+
+
+                foreach (Trash trash in trashList)
+                {
+                    var removeTrash = (from t in _context.Trashes
+                                      where t.ID == trash.ID
+                                      select t).ToList();
+                    if (trash.ID == ID)
+                    {
+                        trash.ID = 0;
+                        trash.isPinned = true;
+                        _context.Trashes.Remove(removeTrash[0]);
+                        _context.Trashes.Add(trash);
+                        continue;
+                    }
+                    trash.ID = newID;
+                    _context.Trashes.Remove(removeTrash[0]);
+                    _context.Trashes.Add(trash);
+
+                    newID++;
+                }
                 _context.SaveChanges();
                 return true;
             }

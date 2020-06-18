@@ -13,6 +13,7 @@
           <Property Name="description" Type="text" />
           <Property Name="dateCreated" Type="date" />
           <Property Name="tags" Type="text" />
+          <Property Name="isPinned" Type="bit" />
         </EntityType>
         <EntityType Name="Trash">
           <Key>
@@ -22,6 +23,7 @@
           <Property Name="description" Type="text" />
           <Property Name="dateCreated" Type="date" />
           <Property Name="tags" Type="text" />
+          <Property Name="isPinned" Type="bit" />
         </EntityType>
         <EntityContainer Name="DBSimpleNoteModelStoreContainer">
           <EntitySet Name="Note" EntityType="Self.Note" Schema="dbo" store:Type="Tables" />
@@ -39,6 +41,7 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="dateCreated" Type="DateTime" Precision="0" />
           <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isPinned" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="DBSimpleNoteEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Notes" EntityType="Self.Note" />
@@ -52,6 +55,7 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="dateCreated" Type="DateTime" Precision="0" />
           <Property Name="tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isPinned" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -62,6 +66,7 @@
           <EntitySetMapping Name="Notes">
             <EntityTypeMapping TypeName="DBSimpleNoteModel.Note">
               <MappingFragment StoreEntitySet="Note">
+                <ScalarProperty Name="isPinned" ColumnName="isPinned" />
                 <ScalarProperty Name="tags" ColumnName="tags" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -72,6 +77,7 @@
           <EntitySetMapping Name="Trashes">
             <EntityTypeMapping TypeName="DBSimpleNoteModel.Trash">
               <MappingFragment StoreEntitySet="Trash">
+                <ScalarProperty Name="isPinned" ColumnName="isPinned" />
                 <ScalarProperty Name="tags" ColumnName="tags" />
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
                 <ScalarProperty Name="description" ColumnName="description" />

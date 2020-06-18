@@ -32,8 +32,9 @@
             this.panelAllNote = new System.Windows.Forms.Panel();
             this.splitter3 = new System.Windows.Forms.Splitter();
             this.panelNoteDescription = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelTrashDescription = new System.Windows.Forms.Panel();
             this.richTextBoxTrashDescription = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRestoreTrash = new System.Windows.Forms.Button();
             this.btnDeleteTrash = new System.Windows.Forms.Button();
@@ -43,14 +44,13 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxNewNote = new System.Windows.Forms.PictureBox();
             this.textBoxTrashNoteSearch = new System.Windows.Forms.TextBox();
-            this.panelTrashDescription = new System.Windows.Forms.Panel();
             this.panelAllNote.SuspendLayout();
             this.panelNoteDescription.SuspendLayout();
+            this.panelTrashDescription.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelTrashNoteReview.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewNote)).BeginInit();
-            this.panelTrashDescription.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelAllNote
@@ -88,14 +88,15 @@
             this.panelNoteDescription.Size = new System.Drawing.Size(571, 608);
             this.panelNoteDescription.TabIndex = 4;
             // 
-            // panel1
+            // panelTrashDescription
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 37);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(571, 1);
-            this.panel1.TabIndex = 4;
+            this.panelTrashDescription.Controls.Add(this.richTextBoxTrashDescription);
+            this.panelTrashDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTrashDescription.Location = new System.Drawing.Point(0, 38);
+            this.panelTrashDescription.Name = "panelTrashDescription";
+            this.panelTrashDescription.Padding = new System.Windows.Forms.Padding(10);
+            this.panelTrashDescription.Size = new System.Drawing.Size(571, 570);
+            this.panelTrashDescription.TabIndex = 5;
             // 
             // richTextBoxTrashDescription
             // 
@@ -111,13 +112,22 @@
             this.richTextBoxTrashDescription.TabIndex = 3;
             this.richTextBoxTrashDescription.Text = "";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 37);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(571, 1);
+            this.panel1.TabIndex = 4;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
             this.tableLayoutPanel1.Controls.Add(this.btnRestoreTrash, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDeleteTrash, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -236,26 +246,16 @@
             this.textBoxTrashNoteSearch.Location = new System.Drawing.Point(7, 8);
             this.textBoxTrashNoteSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxTrashNoteSearch.Name = "textBoxTrashNoteSearch";
-            this.textBoxTrashNoteSearch.Size = new System.Drawing.Size(277, 26);
+            this.textBoxTrashNoteSearch.Size = new System.Drawing.Size(277, 31);
             this.textBoxTrashNoteSearch.TabIndex = 2;
             this.textBoxTrashNoteSearch.Text = "Trash";
             this.textBoxTrashNoteSearch.TextChanged += new System.EventHandler(this.textBoxTrashNoteSearch_TextChanged);
             this.textBoxTrashNoteSearch.Enter += new System.EventHandler(this.textBoxTrashNoteSearch_Enter);
             this.textBoxTrashNoteSearch.Leave += new System.EventHandler(this.textBoxTrashNoteSearch_Leave);
             // 
-            // panelTrashDescription
-            // 
-            this.panelTrashDescription.Controls.Add(this.richTextBoxTrashDescription);
-            this.panelTrashDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTrashDescription.Location = new System.Drawing.Point(0, 38);
-            this.panelTrashDescription.Name = "panelTrashDescription";
-            this.panelTrashDescription.Padding = new System.Windows.Forms.Padding(10);
-            this.panelTrashDescription.Size = new System.Drawing.Size(571, 570);
-            this.panelTrashDescription.TabIndex = 5;
-            // 
             // frmTrash
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 608);
             this.Controls.Add(this.panelAllNote);
@@ -270,12 +270,12 @@
             this.Load += new System.EventHandler(this.frmTrash_Load);
             this.panelAllNote.ResumeLayout(false);
             this.panelNoteDescription.ResumeLayout(false);
+            this.panelTrashDescription.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panelTrashNoteReview.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewNote)).EndInit();
-            this.panelTrashDescription.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
